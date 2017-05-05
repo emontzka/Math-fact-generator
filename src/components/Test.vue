@@ -39,10 +39,6 @@ export default {
   		const num1 = this.randomize()
   		const num2 = this.randomize()
 
-      // let addPromise = new Promise((resolve, reject) => {
-        
-      // })
-
   		this.problems.push({
   			multiplicand: num1,
   			multiplier: num2,
@@ -52,34 +48,25 @@ export default {
 
   	},
   	checkAnswer: function(index) {
-  		if ( parseInt(this.problems[index].product) !== parseInt(event.target.value) || '') {
-  			this.wrongAnswers.push(this.problems[index])
-  			// console.log('oops!')
-  		} else {
-  			// console.log('right answer!')
-  			this.totalCorrect++;
-  			// console.log(this.totalCorrect)
-  		}
-  		this.addProblem();
+      if (event.target.value.length === 0) { return }
+      // } else {
+      if ( parseInt(this.problems[index].product) !== parseInt(event.target.value) ) {
+        this.wrongAnswers.push(this.problems[index])
+        // console.log('oops!')
+      } else {
+          // console.log('right answer!')
+          this.totalCorrect++;
+          // console.log(this.totalCorrect)
+        }
+        console.log('value is ' + event.target.value.length)
+        this.addProblem();
+      // }
+
   	}
   },
   updated: function() {
     // console.log(document.querySelector('.problemList').lastChild.querySelector('.answer'))    
     document.querySelector('.problemList').lastChild.querySelector('.answer').focus()
-    // problems: function() {
-    //   // console.log('hello')
-    //   // console.dir(this.problems.length)
-    //   let probLength = this.problems.length
-    //   let problemNodes = document.querySelectorAll('.problem')
-    //   console.log(document.querySelector('.problemList').lastChild.innerHTML)
-      
-
-      // console.log(problem.product)
-      // console.log(problems)
-      // let thisIndex = this.problems.length;
-      // var lastProblem = document.querySelectorAll('.problemList li')
-      // console.log("watch method: " + lastProblem)
-    // }
   }
 }
 </script>
