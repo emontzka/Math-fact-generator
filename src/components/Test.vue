@@ -1,9 +1,10 @@
 <template>
 	<div class="test">
+    <timer :generatorOn='true'></timer>
 		<button v-on:click="addProblem">Add Math Problem</button>
 		<ul class="problemList">
 			<li v-for="(problem, index) in problems" class="problem">
-				{{ problem.multiplicand }} x {{ problem.multiplier }} = <input class="answer" onload="console.log('clicked')" v-on:keyup.enter="checkAnswer(index)"  type="number" />
+				{{ problem.multiplicand }} x {{ problem.multiplier }} = <input class="answer" v-on:keyup.enter="checkAnswer(index)"  type="number" />
 			</li>
 		</ul>
 		<hr>
@@ -18,6 +19,8 @@
 </template>
 
 <script>
+import Timer from './Timer.vue'
+
 export default { 
   name: 'test',
   data () {
@@ -29,6 +32,9 @@ export default {
       totalAnswered: 0,
       totalCorrect: 0
     }
+  },
+  components: {
+    Timer
   },
   methods: {
   	randomize: function( low = 2, high = 12) {
@@ -65,8 +71,11 @@ export default {
   	}
   },
   updated: function() {
-    // console.log(document.querySelector('.problemList').lastChild.querySelector('.answer'))    
-    document.querySelector('.problemList').lastChild.querySelector('.answer').focus()
+    // console.log(document.querySelector('.problemList').lastChild.querySelector('.answer'))   
+    var problemList = document.querySelector('.problemList');
+    if (problemList.querySelectorAll('.problem').length > 1) {
+      document.querySelector('.problemList').lastChild.querySelector('input').focus();
+    }
   }
 }
 </script>
