@@ -2,8 +2,9 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <!-- <hello></hello> -->
+    <timer></timer>
     <test></test>
-    <!-- <timer></timer> -->
+    
   </div>
 </template>
 

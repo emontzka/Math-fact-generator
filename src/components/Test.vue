@@ -1,6 +1,6 @@
 <template>
 	<div class="test">
-    <timer :generatorOn='true'></timer>
+    <!-- <timer :generat  orOn='false'></timer> -->
 		<button v-on:click="addProblem">Add Math Problem</button>
 		<ul class="problemList">
 			<li v-for="(problem, index) in problems" class="problem">
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Timer from './Timer.vue'
+// import Timer from './Timer.vue'
 
 export default { 
   name: 'test',
@@ -34,7 +34,7 @@ export default {
     }
   },
   components: {
-    Timer
+    // Timer
   },
   methods: {
   	randomize: function( low = 2, high = 12) {
