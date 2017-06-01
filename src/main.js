@@ -5,9 +5,15 @@ import App from './App'
 
 Vue.config.productionTip = false
 
+export const eventBus = new Vue();
+
+// Vue.component('App', {
+	
+// })
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  template: '<App/>',
-  components: { App }
+  // template: '<App/>',
+  render: h => h(App),
+  // components: { App }
 })

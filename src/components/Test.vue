@@ -1,6 +1,6 @@
 <template>
 	<div class="test">
-    <timer :generatorOn='true'></timer>
+    <timer :generator='generatorOn' @stopTheGenerator="generatorOn = $event"></timer>
 		<button v-on:click="addProblem">Add Math Problem</button>
 		<ul class="problemList">
 			<li v-for="(problem, index) in problems" class="problem">
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+// import { eventBus } from '../main';
 import Timer from './Timer.vue'
 
 export default { 
@@ -29,6 +30,7 @@ export default {
       ],
       wrongAnswers: [
       ],
+      generatorOn: true,
       totalAnswered: 0,
       totalCorrect: 0
     }

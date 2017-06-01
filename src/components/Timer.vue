@@ -1,43 +1,49 @@
 <template>
 	<div>
-		<button @click="startTimer(4)">Start Timer</button>
+		<button @click="startTimer(.3)">Start Timer</button>
+		<button @click="testProps()">Test props</button>
 		<p>{{ minutes }} {{ seconds }}</p>
 	</div>
 </template>
 
 <script>
+// import { eventBus } from '../main';
+// console.dir(eventBus);
 	export default {
 		name: 'timer',
 		data () {
 			return {
 				minutes: 0,
-				seconds: 0,
-				now: Math
+				seconds: 0
+				// now: Math
 			}
 		},
-		props: ['generatorOn'],
+		props: ['generator'],
 		methods: {
 			startTimer: function (theMinutes=3) {
 				console.log(theMinutes);
+				eventBus.$emit('stopTheGenerator', this.generator);
 				var endDate = Date.parse(new Date()) + (theMinutes * 60 * 1000);
-				// console.log('end date ' + endDate);
+				var vm = this;
 				window.setInterval(() => {
 					var t = endDate - (Date.parse(new Date()));
-					this.seconds = Math.floor((t / 1000) % 60);
-					this.minutes = Math.floor((t / 1000 / 60) % 60);
+					if (t >= 0) {
+						vm.seconds = Math.floor((t / 1000) % 60);
+						vm.minutes = Math.floor((t / 1000 / 60) % 60);
+					} else {
+						console.log('we are done');
+						// vm.generatorOn = false;
+						this.generator = false;
+						eventBus.$emit('stopTheGenerator', vm.generator);
+						clearInterval(window);
+					}
 				},1000)
-				// console.log(Date.parse(new Date()));
-				// const endDate = Date.parse(new Date()) + (minutes * 60 * 1000);
-				// const IntervalID = setInterval(getRemainingTime, 1000);
-				// var getRemainingTime = function() {
-				// 	let t = endDate - (Date.parse(new Date()));
-				// 	let second = Math.floor((t / 1000) % 60);
-				// 	let minute = Math.floor((t / 1000 / 60) % 60);
-				// 	return this.seconds++
-				// }
-				// var IntervalID = setInterval(this.getRemainingTime, 1000);
-				// getRemainingTime();
+
 				// return this.seconds++
+			},
+			testProps: function () {
+				this.generator = false;
+				this.$emit('stopTheGenerator', this.generator);
 			}
 		}
 	}
