@@ -1,7 +1,10 @@
 <template>
 	<div>
 		<button @click="startTimer(.3)">Start Timer</button>
+<<<<<<< HEAD
 		<button @click="testProps()">Test props</button>
+=======
+>>>>>>> 13fdc373c15d739ed33e8fe93564b95f81bd80b3
 		<p>{{ minutes }} {{ seconds }}</p>
 	</div>
 </template>
@@ -24,6 +27,7 @@
 				console.log(theMinutes);
 				eventBus.$emit('stopTheGenerator', this.generator);
 				var endDate = Date.parse(new Date()) + (theMinutes * 60 * 1000);
+<<<<<<< HEAD
 				var vm = this;
 				window.setInterval(() => {
 					var t = endDate - (Date.parse(new Date()));
@@ -39,6 +43,20 @@
 					}
 				},1000)
 
+=======
+
+				window.setInterval(() => {
+					var t = endDate - (Date.parse(new Date()));
+					if ( t > -1000 ) {
+						// this.generatorOn = true;
+						this.seconds = Math.floor((t / 1000) % 60);
+						this.minutes = Math.floor((t / 1000 / 60) % 60);	
+					} else {
+						return;
+					}
+
+				},1000)
+
 				// function myfunc() {
 				// 	var t = endDate - (Date.parse(new Date()));
 				//   	if (t > 0  ) {
@@ -50,6 +68,7 @@
 				//   }
 				//   var IntervalID = window.setInterval(myfunc, 1000);
 
+>>>>>>> 13fdc373c15d739ed33e8fe93564b95f81bd80b3
 				// return this.seconds++
 			},
 			testProps: function () {
