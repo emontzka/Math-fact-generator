@@ -1,8 +1,8 @@
 <template>
 	<div class="test">
     <timer :generator='generatorOn' @stopTheGenerator="generatorOn = $event"></timer>
-		<button v-on:click="addProblem">Add Math Problem</button>
-		<ul class="problemList">
+		<button v-on:click="addProblem" v-if="generatorOn">Add Math Problem</button>
+		<ul class="problemList" v-if="generatorOn">
 			<li v-for="(problem, index) in problems" class="problem">
 				{{ problem.multiplicand }} x {{ problem.multiplier }} = <input class="answer" v-on:keyup.enter="checkAnswer(index)"  type="number" />
 			</li>

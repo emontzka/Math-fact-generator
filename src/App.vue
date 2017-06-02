@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <!-- <hello></hello> -->
-    <timer></timer>
+    <!-- <timer></timer> -->
     <test></test>
     
   </div>

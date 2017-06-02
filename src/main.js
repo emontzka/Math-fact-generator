@@ -5,11 +5,11 @@ import App from './App'
 
 Vue.config.productionTip = false
 
-export const eventBus = new Vue();
+// export const eventBus = new Vue();
 
-// Vue.component('App', {
+Vue.component('App', {
 	
-// })
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
